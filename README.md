@@ -1,2 +1,2 @@
 # B.sc-Computer-Science-Practicals
-This repository is meant to have all the practical programs semester wise.
+This repository contains all the practical programs semester wise.
