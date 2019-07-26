@@ -1,0 +1,20 @@
+;2. Add two user entered numbers and output the sum
+INP
+
+ADD DIRECT make_int
+
+STA DIRECT op
+
+INP
+
+ADD DIRECT op
+
+OUT
+
+HLT
+
+op: .data 1[0]
+
+sum: .data 1[0]
+
+make_int: .data 1[-48]                        

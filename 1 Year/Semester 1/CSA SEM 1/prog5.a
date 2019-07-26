@@ -1,0 +1,34 @@
+;5.Compare two numbers are equal or not
+
+INP
+
+STA DIRECT op1
+
+INP
+
+CMA
+
+INC
+
+ADD DIRECT op1
+
+SZA
+
+BUN DIRECT PrintN
+
+PrintE: LDA DIRECT E
+        
+OUT 
+        
+HLT
+
+PrintN: LDA DIRECT N
+        
+OUT
+        
+HLT
+op1: .data1[]
+
+E: .ascii "E"
+
+N: .ascii "N"

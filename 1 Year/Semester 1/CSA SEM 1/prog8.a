@@ -1,0 +1,27 @@
+;8. Check 3rd bit of a number is set or reset. If set, output 'S' else output 'R'
+LDA DIRECT op
+
+CIR
+CIR
+CIR
+SZE
+
+BUN DIRECT SET
+
+LDA DIRECT print_R
+
+OUT
+
+HLT
+
+SET:LDA DIRECT print_S
+
+OUT
+
+HLT
+
+print_R: .ascii "R"
+
+print_S: .ascii "S"
+
+op: .data 1[1234]

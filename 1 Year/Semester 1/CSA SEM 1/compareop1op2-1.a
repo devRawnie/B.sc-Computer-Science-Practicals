@@ -1,0 +1,38 @@
+;if op1 > op2 print 1 
+;else print 2 using subroutines
+
+;Perform Subtraction AC<-op1-op2
+LDA Direct op2
+CMA
+INC
+ADD Direct op1
+STA Direct diff
+
+Check cout after subtraction and take decisions
+SZE
+BSA Direct ____ ;E=1=>?
+;Next instr only executed if above instruction not executed
+BSA Direct ____; E=0=>? (Unsigned sub)
+HLT
+
+
+f1:.data 1[0]; return address
+LDA Direct char1
+OUT
+LDA Direct f1
+INC
+STA Direct f1
+BUN Indirect f1   ;Return
+
+
+f2:.data 1[0]   ;return address
+LDA Direct char2
+OUT
+LDA Direct diff
+BUN Indirect f2   ;return
+
+op1:.data 1[12]
+op2:.data 1[13]
+char1: .data 1[49]   ;or .ascii "1"
+char2:.data 1[50]	;or .ascii "2"
+diff:.data 1[0]

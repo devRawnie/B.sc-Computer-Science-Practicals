@@ -1,0 +1,19 @@
+;Subtract two numbers from a memory location and store the result.
+
+LDA DIRECT op1
+
+CMA
+
+INC
+
+ADD DIRECT op2
+
+STA DIRECT difference
+
+HLT
+
+op1: .data 1[50]
+
+op2: .data 1[100]
+
+difference: .data 1[0]

@@ -1,0 +1,14 @@
+;1. Add two numbers from a memory locations and store the result
+
+LDA DIRECT op1
+ADD DIRECT op2
+
+STA DIRECT sum
+
+HLT
+
+op1: .data 1[5]
+
+op2: .data 1[10]
+
+sum: .data 1[0]

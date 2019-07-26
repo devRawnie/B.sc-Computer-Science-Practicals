@@ -1,0 +1,3 @@
+LDA DIRECT OP
+HLT
+OP: .data 1[5]

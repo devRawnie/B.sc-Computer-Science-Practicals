@@ -1,0 +1,21 @@
+;op1 vs op2 
+;if op1>op2, display1
+;Else display 2
+LDA Direct op2
+CMA
+INC
+ADD Direct op1
+;if op1>op2 then cout=1
+; else cout=0
+SZE
+BUN Direct gr1 ;cout=1
+LDA Direct char2
+OUT
+HLT
+gr1:LDA Direct char1
+OUT ;BUN Direct eq
+HLT
+op1:.data 1[3]
+op2:.data 1[3]
+char1:.ascii "1"
+char2:.ascii "2"

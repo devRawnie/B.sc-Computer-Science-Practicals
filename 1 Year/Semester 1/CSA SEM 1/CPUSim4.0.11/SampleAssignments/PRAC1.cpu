@@ -1,0 +1,8 @@
+LDA INDIRECT op1
+INC
+;ADD INDIRECT op2
+HLT
+op1: .data 1[9]
+op2: .data 1[11]
+op3: .data 1[5]
+op4: .data 1[5]

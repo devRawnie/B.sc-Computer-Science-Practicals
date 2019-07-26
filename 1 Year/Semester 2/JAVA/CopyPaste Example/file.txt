@@ -1,0 +1,1 @@
+This text was written in file named "file.txt"

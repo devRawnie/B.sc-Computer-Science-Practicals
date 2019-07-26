@@ -1,0 +1,45 @@
+;6.If 1st operand is greater than second OUTPUT is 1,else OUTPUT 2
+
+INP
+
+ADD DIRECT make_int
+
+CMA
+
+INC
+
+STA DIRECT op
+
+INP
+
+ADD DIRECT make_int
+
+ADD DIRECT op
+
+CIL
+
+CLA
+
+CME
+
+SZE
+
+BUN DIRECT print2
+
+LDA DIRECT P1
+
+OUT
+
+HLT
+
+print2: LDA DIRECT P2
+
+OUT 
+
+HLT
+
+P1: .data 1[1]
+
+P2: .data 1[2]
+
+make_int: .data 1[-48]

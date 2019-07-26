@@ -1,0 +1,17 @@
+INP
+ADD DIRECT int
+CMA
+STA DIRECT loopval
+LDC DIRECT loopval
+loop: CLA
+INP
+ADD DIRECT int
+ADD DIRECT sum
+STA DIRECT sum 
+ICSZ
+BUN DIRECT loop
+OUT
+HLT
+loopval: .data 1[0]
+sum: .data 1[0]
+int: .data 1[-48]

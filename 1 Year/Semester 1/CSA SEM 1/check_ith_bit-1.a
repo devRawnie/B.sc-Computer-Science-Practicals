@@ -1,0 +1,31 @@
+;starting from 0, 
+;check 2nd bit of op1 is set,
+; if set, then output y
+;else out n
+
+;Setup the value of mask in AC
+CLA
+INC
+CIL
+CIL
+
+;Mask the operand
+AND Direct op1
+
+;Check the outcome of masking and take decision
+SZA
+BUN Direct ______
+BUN Direct ______
+HLT
+
+n:LDA Direct charn
+OUT
+HLT
+
+y:LDA Direct chary
+OUT
+HLT
+
+charn:.ascii "n"
+chary:.ascii "y"
+op1:.data 1[14]

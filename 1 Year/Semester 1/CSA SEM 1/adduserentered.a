@@ -1,0 +1,12 @@
+;op1+op2
+;2's comp of op2
+INP
+STA Direct dest
+;enter op1
+INP
+ADD Direct dest
+ADD Direct ASCIIOffset
+OUT
+HLT
+dest:.data 1[0]
+ASCIIOffset:.data 1[-48]

@@ -1,0 +1,41 @@
+;4.Subtract two user entered numbers and output the difference
+INP
+
+ADD DIRECT make_int
+
+STA DIRECT op
+
+INP
+
+ADD DIRECT make_int
+
+CMA
+
+INC
+
+ADD DIRECT op
+
+SZE
+
+BUN DIRECT Print
+
+BUN DIRECT comp2
+
+Print:ADD DIRECT make_ascii     
+OUT
+
+HLT
+
+comp2:CMA
+     
+INC
+      
+BUN DIRECT Print                                                                                                                         
+op: .data 1[0]
+
+make_int: .data 1[-48]
+
+make_ascii: .data 1[48]
+
+ANS: .data1[0]
+  

@@ -1,0 +1,21 @@
+;Check if operand is even/odd
+LDA Direct op
+
+;Check LSB and take decisions
+__________
+__________
+BUN Direct odd        ;LSB=1
+BUN Direct even		 ;LSB=0
+HLT
+
+odd:LDA Direct charo
+OUT
+HLT
+
+even:LDA Direct chare
+OUT
+HLT
+
+op:.data 1[0]
+charo:.ascii "o"
+chare:.ascii "e"

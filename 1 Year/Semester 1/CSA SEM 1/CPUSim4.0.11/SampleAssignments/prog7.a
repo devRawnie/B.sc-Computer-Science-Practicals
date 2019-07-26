@@ -1,0 +1,27 @@
+;7. Check if a given number is even or odd. Output 'E' for even, 'O' for odd.
+INP
+
+ADD DIRECT make_int
+
+CIR
+
+SZE 
+
+BUN DIRECT odd
+
+LDA DIRECT E
+
+OUT
+
+HLT
+
+odd:LDA DIRECT O
+       
+OUT
+       
+HLT
+
+E:.ascii "E"
+
+O:.ascii "O"
+make_int: .data 1[-48]
