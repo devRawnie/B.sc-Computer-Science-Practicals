@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/dial_number"
+        android:title="@string/dial_text"/>
+ <item android:id="@+id/browse_web"
+        android:title="@string/browse_text"/>
+ <item android:id="@+id/about_us_menu"
+     android:title="@string/about_us_text"/>
+</menu>

@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">ANDROID PRACTICALS</string>
+    <string name="hello_world">HELLO WORLD</string>
+    <string name="activities_lifecycle_example">ACTIVITIES LIFECYCLE EXAMPLE</string>
+    <string name="enter_message">ENTER MESSAGE:</string>
+    <string name="send_button_explicit_ex1">SEND</string>
+    <string name="received_message">RECEIVED MESSAGE</string>
+    <string name="to_field">TO:</string>
+    <string name="sub_field">SUB:</string>
+    <string name="body_field">BODY:</string>
+    <string name="lifecycle">ACTIVITY LIFECYCLE</string>
+    <string name="explicit_intent">EXPLICIT INTENT EXAMPLE</string>
+    <string name="email_activity">EMAIL ACTIVITY</string>
+    <string name="spinner_example">SPINNER EXAMPLE</string>
+    <string name="about_us" >WE BELONG TO A COMMUNITY CALLED THE C.S. STUDENTS. SINCE COMPUTERS ARE VERY FAMOUS THESE DAYS, EVERYONE KNOWS HOW
+                                TO OPERATE ON COMPUTERS. SO WE GOTTA BE REAL GOOD AT BOTH SOFTWARE AND HARDWARE ASPECT OF COMPUTERS TO SUCCEED</string>
+    <string name="dial_text">DIAL</string>
+    <string name="browse_text">BROWSE</string>
+    <string name="about_us_text">ABOUT US</string>
+    <string name="menu_example_text">MENU EXAMPLE</string>
+
+    <string-array name="planets_images">
+        <item>Solar System</item>
+        <item>Sun</item>
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+        <item>Select something</item>
+    </string-array>
+</resources>

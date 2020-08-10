@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:isScrollContainer="true"
+    android:fillViewport="true"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+<LinearLayout
+    android:layout_width="0dp"
+    android:layout_weight="1"
+    android:layout_height="wrap_content"
+    tools:context=".navigation"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/hello_world"
+        android:textStyle="bold"
+        android:onClick="openHelloWorld"/>
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/lifecycle"
+        android:textStyle="bold"
+        android:onClick="openActivityLifecycle"/>
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/explicit_intent"
+        android:textStyle="bold"
+        android:onClick="openExplicitIntent"/>
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/email_activity"
+        android:textStyle="bold"
+        android:onClick="openEmailActivity"/>
+<Button
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:text="@string/spinner_example"
+    android:textStyle="bold"
+    android:onClick="openSpinnerExample" />
+</LinearLayout>
+<LinearLayout
+    android:layout_width="0dp"
+    android:layout_weight="1"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/menu_example_text"
+        android:textStyle="bold"
+        android:onClick="openMenuExample" />
+</LinearLayout>
+</LinearLayout>
+</ScrollView>
