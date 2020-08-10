@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Student Registration Form</title>
+  <link rel="stylesheet" href="w3.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+</head>
+
+<body class='w3-container'>
+  <div class='w3-container w3-center'>
+    <h1>STUDENT REGISTRATION FORM</h1>
+    <form id='form1' class='w3-content w3-margin-top' onsubmit="event.preventDefault()">
+      <input class='w3-input w3-border' type='number' id='roll' placeholder="ROLL NUMBER(7 digit)" />
+      <p id='roll_error' style='display:none;' class='w3-panel w3-red'></p>
+      <input class='w3-input w3-border w3-margin-top' type='text' id='uname' placeholder="NAME" />
+      <p id='name_error' style='display:none;' class='w3-panel w3-red'></p>
+      <input class='w3-input w3-border w3-margin-top' type='text' id='dob' placeholder="DATE (in dd/mm/yy format)" />
+      <p id='date_error' style='display:none;' class='w3-panel w3-red'></p>
+      <input class='w3-button w3-blue w3-margin-top' type='submit' value="Submit" />
+    </form>
+  </div>
+  <p id='success-msg' class="w3-panel w3-green" style='display:none;'></p>
+  <div class='w3-container' id='data'></div>
+  <script>
+    function isValidRoll(roll) {
+      var regex_roll = new RegExp('^([0-9]){7}$');
+      return regex_roll.test(roll);
+    }
+    function isValidName(name) {
+      var regex_name = new RegExp('^[a-zA-Z]+$');
+      return regex_name.test(name);
+    }
+    function isValidDate(date) {
+      var regex_date = new RegExp('^(([0-9]){2}/){2}([0-9]){2}$');
+      return regex_date.test(date);
+    }
+    function formatDate(date){
+      var months = ['January', 'February' , 'March', 'April', 'May' , 'June', 'July', 'August', 'September', 'October' , 'November', 'December'];
+      var day = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      var d = date.split('/');
+      var newDate = new Array();
+      var y = '20' + d[2];
+      console.log(y, d[1], d[0]);
+      
+      var newDate = new Date(y , d[1]-1, d[0]);
+      return day[newDate.getDay()] + "," + months[newDate.getMonth()] + " " + newDate.getDate() + ", " + newDate.getFullYear();
+    }
+
+    function validateInput() {
+      document.getElementById('data').innerHTML='';
+      var n = document.getElementById('uname').value;
+      var r = document.getElementById('roll').value;
+      var d = document.getElementById('dob').value;
+      var name = isValidName(n);
+      var roll = isValidRoll(r);
+      var date = isValidDate(d);
+      if (!name) {
+        document.getElementById('name_error').style.display = "block";
+        document.getElementById('name_error').innerHTML = "Invalid Name Format( must contain all alphabets)";
+      }else{
+        document.getElementById('name_error').style.display = "none";
+      }
+      if (!roll) {
+        document.getElementById('roll_error').style.display = "block";
+        document.getElementById('roll_error').innerHTML = "Invalid Roll Number Format( must be 7 digit long integer)";
+      }
+      else{
+        document.getElementById('roll_error').style.display = "none";
+      }
+      if (!date) {
+        document.getElementById('date_error').style.display = "block";
+        document.getElementById('date_error').innerHTML = "Invalid Date Format( must be in format: dd/mm/yy)";
+      }else{
+        document.getElementById('date_error').style.display = "none";
+      }
+      if (roll && name && date) {
+        document.getElementById('success-msg').style.display = "block";
+        document.getElementById('success-msg').innerHTML = "All Fields were Correct";
+        document.getElementById('data').innerHTML = "<h3>Submitted Data:</h3>\
+          <ul><li>Name:" + n + "</li> \<li> Roll Number: " + r + "</li><li>Date: " + formatDate(d);
+      }
+      else {
+        document.getElementById('success-msg').style.display = "none";
+      }
+
+    }
+     document.getElementById('form1').addEventListener('submit', validateInput);
+
+  </script>
+</body>
+
+</html>

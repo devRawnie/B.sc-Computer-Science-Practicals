@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Stack Implementation</title>
+        <link rel="stylesheet" href="w3.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8" />
+        <style>
+            #stack{
+                list-style-type: disc;
+            }
+        </style>
+    </head>
+    <body class='w3-margin w3-container'>
+        <h3>
+            STACK
+        </h3>
+            <form id='form1'>
+                <input class='w3-input w3-border' type="text" id='inp' placeholder="Enter any element"/>
+                <input class='w3-button w3-blue w3-margin-top' type="button" id="push" value="Push" onclick="Spush()"/>
+                <input class='w3-button w3-blue w3-margin-top' type="button" id="pop" value="Pop" onclick="Spop()"/>
+            </form>
+        
+        <h3>Stack</h3>
+        <div class="w3-container w3-margin" >
+            <ul class='w3-ul w3-xlarge' id='stack'>
+            </ul>
+        </div>
+    <script>
+        var arr = [];
+        function display(){
+            var newItem = document.createElement("li");
+            var textnode = document.createTextNode(arr[arr.length - 1]);
+            newItem.appendChild(textnode);
+            var list = document.getElementById("stack");
+            list.insertBefore(newItem, list.childNodes[0]);   
+        }
+        function remove(){
+                var list = document.getElementById("stack");   // Get the <ul> element with id="myList"
+                list.removeChild(list.childNodes[0]);           // Remove <ul>'s first child node (index 0)
+        }
+
+        function Spush(){
+            var ele = document.getElementById('inp'); 
+            arr.push(ele.value);    
+            ele.value = "";
+            display();
+        }
+        function Spop(){
+            if(arr.length == 0)
+            {   
+                alert('Empty Stack');
+            }
+            else{
+                arr.pop();
+                remove();
+            }
+            }
+    </script>
+    </body>
+</html>

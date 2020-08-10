@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Change Color and Shift Image</title>
+    <link rel="stylesheet" href="w3.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <style>
+        input{
+            max-width: 600px;
+        }
+        select{
+            max-width: 600px;
+        }
+        label{
+            font-size: 1.3em;
+        }
+    </style>
+
+</head>
+
+<body class='w3-purple'>
+    <div class='w3-container w3-margin w3-black'>
+        <header class='w3-container'>
+            <h1 class='w3-jumbo'>
+                <b>Infonet Services</b>
+            </h1>
+        </header>
+        <div id='form-area' class='w3-container'></div>
+    </div>
+    <script>
+            function create_form() {
+                var x = document.getElementById('form-area');
+                var form = document.createElement("form");
+                form.setAttribute('id', 'form');
+                x.appendChild(form);
+                return form;
+                }
+            function addInputs(form, data){
+                inpT = data.text;        
+                textboxes = inpT.content;
+                //Input Boxes
+                for(var i in textboxes){
+                    var ele = textboxes[i];
+                    var n = document.createElement('input');
+                    n.setAttribute('class', ele.class);
+                    n.setAttribute('id', ele.id);
+                    n.setAttribute('type', ele.type);
+                    n.setAttribute('placeholder', ele.placeholder);
+                    form.appendChild(n);
+                }
+        
+                //Inline Input boxes
+                inpTInline = data.text_inline;        
+                textboxes_inline = inpTInline.content;
+                var divInline = document.createElement('div');
+                divInline.setAttribute('class', 'w3-container');
+                form.appendChild(divInline);
+                for(var i in textboxes_inline){
+                    var ele = textboxes_inline[i];
+                    var div = document.createElement('div');
+                    div.setAttribute('class', inpTInline.class);
+                    
+                    var n = document.createElement('input');
+                    n.setAttribute('class', ele.class);
+                    n.setAttribute('id', ele.id);
+                    n.setAttribute('type', ele.type);
+                    n.setAttribute('placeholder', ele.placeholder);
+                    div.appendChild(n);
+                    divInline.appendChild(div);
+                }
+        
+                //Radio Buttons
+                inpR = data.radio;
+                radioButton = inpR.content;
+        
+                var d = document.createElement('div');
+                d.setAttribute('class', 'w3-container');
+                var h2 = document.createElement('h2');
+                h2.innerHTML = inpR.heading;
+                d.appendChild(h2);
+                form.appendChild(d);
+        
+        
+        
+                for(var i in radioButton){
+                    var ele = radioButton[i];
+        
+                    var divRadio = document.createElement('div');
+        
+                    var n = document.createElement('input');
+                    n.setAttribute('class', inpR.class);
+                    n.setAttribute('name', inpR.name);
+                    n.setAttribute('type', inpR.type);
+                    n.setAttribute('id', ele.id);
+                    divRadio.appendChild(n);
+                    
+                    var label = document.createElement('label');
+                    label.setAttribute('for', ele.id );
+                    label.innerHTML = ele.text;
+                    divRadio.appendChild(label);
+                    
+                    d.appendChild(divRadio);
+                }
+            
+        
+                //Checkbox Buttons
+                inpC = data.checkbox;
+                checkbox = inpC.content;
+        
+                var d = document.createElement('div');
+                d.setAttribute('class', 'w3-container');
+                var h2 = document.createElement('h2');
+                h2.innerHTML = inpC.heading;
+                d.appendChild(h2);
+                form.appendChild(d);
+        
+        
+        
+                for(var i in checkbox){
+                    var ele = checkbox[i];
+        
+                    var divCheck = document.createElement('div');
+        
+                    var n = document.createElement('input');
+                    n.setAttribute('class', inpC.class);
+                    n.setAttribute('type', inpC.type);
+                    n.setAttribute('id', ele.id);
+                    divCheck.appendChild(n);
+                    
+                    var label = document.createElement('label');
+                    label.setAttribute('for', ele.id );
+                    label.innerHTML = ele.text;
+                    divCheck.appendChild(label);
+                    
+                    d.appendChild(divCheck);
+                }
+                
+        
+                //Select Option
+                inpSelect = data.select;
+                options = inpSelect.content;
+        
+                var d = document.createElement('div');
+                d.setAttribute('class', 'w3-container');
+                var h2 = document.createElement('h2');
+                h2.innerHTML = inpSelect.heading;
+                d.appendChild(h2);
+        
+                var select = document.createElement('select');
+                select.setAttribute('class', inpSelect.class);
+                select.setAttribute('id', inpSelect.id);
+                d.appendChild(select);
+        
+                form.appendChild(d);
+        
+                for(var i in options){
+                    var ele = options[i];
+        
+                    var n = document.createElement('option');
+                    n.setAttribute('value', ele.value);
+                    n.innerHTML = ele.text;            
+                    select.appendChild(n);
+                }
+                d.appendChild(select);
+                
+                //TEXTAREA
+                var divText = document.createElement('div');
+                divText.setAttribute('class', 'w3-container');
+        
+                var textbox = document.createElement('textarea');
+                
+                textbox.setAttribute('style', 'margin:20px;');
+                textbox.setAttribute('rows', '4');
+                textbox.setAttribute('cols', '50');
+                
+                var textHeading = document.createElement('h2');
+                textHeading.innerHTML = 'TextBox Heading';
+                divText.appendChild(textHeading);
+                divText.appendChild(textbox);
+                form.appendChild(divText);
+        
+                var divButton = document.createElement('div');
+                divButton.setAttribute('class', 'w3-container');
+                btn = data.button;
+                btns = btn.content;
+                for(var i in btns){
+                    var ele = btns[i];
+                    var b = document.createElement('button');
+                    
+                    b.setAttribute('class', btn.class);
+                    b.setAttribute('id', ele.id);
+                    b.innerHTML = ele.text;
+                    divButton.appendChild(b);
+                }
+                form.appendChild(divButton);
+            }
+        
+            var values = {
+                text: {
+                    class: '',
+                    content: {
+                        1 : {
+                            placeholder : 'First Name',
+                            id: 'fname',
+                            type: 'text',
+                            class: 'w3-input w3-bottombar w3-border-blue w3-margin' 
+                        },
+                        2 : {
+                            placeholder : 'Second Name',
+                            id: 'lname',
+                            type: 'text',
+                            class: 'w3-input w3-bottombar w3-border-blue w3-margin' 
+                        }, 
+                        3 : {
+                            placeholder : 'Email address',
+                            id: 'email',
+                            type: 'email',
+                            class: 'w3-input w3-bottombar w3-border-blue w3-margin' 
+                        },
+                        4 : {
+                            placeholder : 'Address',
+                            id: 'address',
+                            type: 'text',
+                            class: 'w3-input w3-bottombar w3-border-blue w3-margin' 
+                        },
+                        5 : {
+                            placeholder : 'City',
+                            id: 'city',
+                            type: 'text',
+                            class: 'w3-input w3-bottombar w3-border-blue w3-margin' 
+                        }
+                    }
+                },
+                text_inline: {
+                    class: 'w3-container w3-quarter',
+                    content: {
+                        1 :{
+                            placeholder : 'State',
+                            id: 'state',
+                            type: 'text',
+                            class: 'w3-input w3-margin w3-bottombar w3-border-blue'
+                        },
+                        2 :{
+                            placeholder : 'Postal Code',
+                            id: 'postalcode',
+                            type: 'text',
+                            class: 'w3-input w3-margin w3-bottombar w3-border-blue'
+                        },
+                        3 :{
+                            placeholder : 'Country',
+                            id: 'country',
+                            type: 'text',
+                            class: 'w3-input w3-margin w3-bottombar w3-border-blue'
+                        },
+                    }
+                },
+            radio : {
+                heading: 'Radio Button Heading',
+                class: 'w3-radio',
+                name : 'radio1',
+                type: 'radio',
+                content: {
+                    1 : {
+                        text: 'Radio text 1',
+                        id:'r1'
+                    },
+                    2 : {
+                        text: 'Radio text 2',
+                        id:'r2'
+                    },
+                    3 : {
+                        text: 'Radio text 3',
+                        id:'r3'
+                    }
+                }        
+            },
+            checkbox: {
+                heading: 'Checkbox Heading',
+                class: 'w3-check',
+                type: 'checkbox',
+                content : {
+                    1 : {
+                        text: 'Checkbox text 1',
+                        id:'c1'
+                    },
+                    2 : {
+                        text: 'Checkbox text 2',
+                        id:'c2'
+                    },
+                    3 : {
+                        text: 'Checkbox text 3',
+                        id:'c3'
+                    }
+                }
+            },
+            select: {
+                heading: 'Select Heading',
+                class: 'w3-select',
+                id: 'selection',
+                content: {
+                    1 : {
+                        text: 'Option 1',
+                        value: 'option1',
+                        disabled: 'disabled'
+                    },
+                    2 : {
+                        text: 'Option 2',
+                        value: 'option2',
+                    },
+                    3 : {
+                        text: 'Option 3',
+                        value: 'option3',
+                    }
+                }
+            },
+            button: {
+                class: 'w3-button w3-green w3-margin',
+                content:{
+                    b1 : {
+                        text: 'Submit',
+                        id: 'submit'
+                    },
+                    b2: {
+                        text: 'Reset',
+                        id: 'reset'
+                    }
+                }
+            }
+        }
+        var f = create_form();
+        addInputs(f, values);
+        </script>
+        <script>
+            function isEmpty(){
+                var empty = [];
+                var inputs = document.getElementsByTagName('input');
+                for(var i= 0; i < inputs.length ; i++){
+                    if( (inputs[i].type == 'text' || inputs[i].type == 'email')  && (inputs[i].value == "" || inputs[i].value == null)){
+                        empty.push(inputs[i]);
+                    }
+                }                
+                if(empty.length > 0){
+                    return empty;
+                }else{
+                    return false;
+                }                
+            }
+
+            document.getElementById('submit').addEventListener('click', function(event){
+                event.preventDefault();
+                var x = document.getElementsByTagName('input');
+                for(var i in x){
+                    if(x[i].type == 'text' || x[i].type == 'email'){
+                    x[i].classList.remove('w3-border-red');
+                    x[i].classList.add('w3-border-blue');
+                    }
+                }
+                var empty = isEmpty();
+                if(empty != false){
+                    for(var i in empty){
+                        empty[i].classList.remove('w3-border-blue');
+                        empty[i].classList.add('w3-border-red');
+
+                    }
+                    empty[0].focus();
+                }else{
+                    alert('Form Submitted Successfully');
+                }
+            });
+            document.getElementById('reset').addEventListener('click', function(event){
+                if(confirm('Press OK to reset the form')==true){
+                    document.getElementById('form').reset();
+                }else{
+                    event.preventDefault();
+                }
+            });
+
+        </script>
+</body>
+
+</html>

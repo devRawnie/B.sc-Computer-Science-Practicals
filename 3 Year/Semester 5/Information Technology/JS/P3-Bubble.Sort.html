@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bubble Sort</title>
+    <link rel="stylesheet" href="w3.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+</head>
+
+<body class='w3-container'>
+    <div class='w3-container w3-center'>
+        <h2>Bubble Sort</h2>
+        <form id='form3' onsubmit="event.preventDefault()">
+            <input class='w3-input w3-border' type='text' id='elements'
+                   placeholder="Enter elements of the array seperated by a space(' ') " required />
+            <p id='error' class='w3-panel w3-red'></p>
+            <input class='w3-button w3-blue w3-margin-top' type='submit' value="Submit" />
+        </form>
+    </div>
+    <p id='sorted' class='w3-panel w3-border' style='display:none;'></p>
+    <script>
+        function validate() {
+            var e = document.getElementById('elements').value;
+            e = e.trim();
+            let ex = e.split(' ').map(Number);
+            let flag = true;
+            let pattern = new RegExp("^[0-9]+$");
+            for (let ob of ex) {
+                flag = flag && pattern.test(ob);
+            }
+            if(flag){
+            var elements = e.split(' ').map(Number);
+            sortElements(elements);
+        }
+        alert('Invalid input, only number and spaces allowed')
+        }
+        function sortElements(values) {
+            for(var i = 0; i < values.length; i++){
+                for(var j = 0; j< values.length - i; j++){
+                    if(values[j] > values[j+1]){
+                        var temp = values[j];
+                        values[j] = values[j+1];
+                        values[j+1] = temp;
+                    }
+                }
+            }
+            document.getElementById('sorted').style.display= "block";
+            document.getElementById('sorted').innerHTML = "<h3>Sorted Elements are: " + values;
+        }
+        document.getElementById('form3').addEventListener('submit', validate);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Change Color and Shift Image</title>
+        <link rel="stylesheet" href="w3.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8" />
+        <style>
+            button{
+                margin-left: 10px;
+            }
+        </style>
+    </head>
+
+    <body onload='loadImage()'>
+        <h3></h3>
+        <div class=" w3-container ">
+            <p id='text'><b>This text will change to a random color</b></p>
+            <input type='button' value='Change Color' onclick='changeColor()' />
+            in time(ms): <input type='number' min='0' value='1000' step='100'  placeholder='after time (in ms)' id='time'/>
+            <p id='msg' style='display:none;'></p>
+
+        </div>
+        <hr>
+        <div>
+            <img id='movingImage' src='image.png' width="300" height="300" style='margin-bottom: 10px;' /><br />
+            <button   onclick='startMoving()' >Move</button>
+            <button   onclick='stopMoving()' >Stop</button>
+        </div>       
+
+        <script>
+            var margin = 0;
+            var factor = -1;
+            var interval;
+            var timeour;
+            var x = 1;
+            function changeColor() {
+                var t = document.getElementById('time').value;
+                document.getElementById('msg').style.display = 'block';
+                timeout = setTimeout(function () {
+                    document.getElementById('msg').style.display = 'none';
+                    document.getElementById('text').style.color = '#' + Math.random().toString(16).substr(-6);
+                }, t);
+                document.getElementById('msg').innerHTML = 'Changing in ' + (t/1000) + " seconds";
+            }
+
+            function loadImage() {
+                document.getElementById('movingImage').setAttribute('src', 'https://source.unsplash.com/random/300x300');
+            }
+            function startMoving() {
+                var image = document.getElementById('movingImage');
+                clearInterval(interval);
+                interval = setInterval(function(){
+                    if (margin <= 0 || margin >= screen.width - image.width) {
+                        factor *= -1;
+                    }
+                    margin += 1 * factor;
+                    image.style.marginLeft = margin + "px";
+                }, 1);
+            }
+            function stopMoving() {
+                clearInterval(interval);
+            }
+        </script>
+    </body>
+
+</html>
